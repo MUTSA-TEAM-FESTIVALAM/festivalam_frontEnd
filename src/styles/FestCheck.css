@@ -1,0 +1,94 @@
+.festCheckBody {
+	position: relative;
+	background-size: cover;
+	background-repeat: no-repeat;
+	margin: 0 auto;
+	text-align: center;
+	display: flex;
+	flex-direction: column;
+	align-items: end;
+	gap: 1rem;
+	padding-left: 2%;
+}
+
+.detailCheck {
+	display: flex;
+	flex-direction: column;
+	gap: 2rem;
+}
+
+.placeQ {
+	height: 5rem;
+}
+
+.checkBtn {
+	padding-top: 5.5rem;
+	padding-left: 5rem;
+	padding-right: 3rem;
+	display: flex;
+	justify-content: flex-start;
+	align-items: center;
+	margin-left: 1rem;
+}
+
+.checkBtns {
+	width: auto;
+	height: auto;
+	padding: 0.5rem 1rem;
+	border-radius: 5rem;
+	cursor: pointer;
+	background-color: white;
+	border-color: #5b5a5a;
+	color: #5b5a5a;
+	font-family: 'Noto Sans KR', sans-serif;
+	font-weight: medium;
+	font-size: 0.8rem;
+	border-width: 1px;
+	margin-right: 2rem;
+}
+
+.checkBtns.active {
+	background-color: #5d0ec0;
+	color: white;
+	font-weight: bold;
+	border-width: 2px;
+	font-size: 0.8rem;
+	border: none;
+}
+
+.checkTxt {
+	margin-left: 2rem;
+	width: 90%;
+	border-color: rgba(137, 137, 137, 0.519);
+	border-radius: 8px;
+	height: 20px;
+	font-family: 'Noto Sans KR', sans-serif;
+	word-break: break-all;
+	font-weight: 300;
+	overflow: auto;
+	padding: 10px;
+}
+
+.registBtnCheck {
+	text-align: center;
+}
+
+.BtnCheck {
+	margin-top: 4rem;
+	width: 200px;
+	height: 2.5rem;
+	background-color: white;
+	border-radius: 10rem;
+	border-width: 2px;
+	border-color: #5d0ec0;
+	color: #5d0ec0;
+	font-family: 'Noto Sans KR', sans-serif;
+	font-weight: bold;
+	font-size: 15px;
+	cursor: pointer;
+}
+
+.BtnCheck:hover {
+	background-color: #5d0ec0;
+	color: white;
+}
