@@ -4,9 +4,16 @@ import logo from '../img/logo.png';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
+import { useRecoilState, useSetRecoilState } from 'recoil';
+import { modalControl } from '../utils/atom';
 
-function Navbar() {
+function Navbar(props) {
 	const [tab, setTab] = useState('');
+	const setModalOpen = useSetRecoilState(modalControl);
+	
+	const openModal = () => {
+		setModalOpen(true);
+	}
 
 	return (
 		<div className='navbar'>
@@ -51,9 +58,7 @@ function Navbar() {
 			</div>
 			<div className='line'></div>
 			<div className='buttons'>
-				<Link to='/login'>
-					<button className='navBtn'>로그인</button>
-				</Link>
+					<button className='navBtn' onClick = {openModal}>로그인</button>
 			</div>
 		</div>
 	);

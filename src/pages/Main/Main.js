@@ -11,7 +11,10 @@ import image5 from '../../img/fireCraker/image5.png';
 import image6 from '../../img/fireCraker/image6.png';
 import image7 from '../../img/fireCraker/image7.png';
 import Navbar from '../../components/Nav';
+import LoginModal from '../Login/LoginModal';
 import ScrollToTop from '../../components/ScrollToTop';
+import { useRecoilState } from 'recoil';
+import { modalControl } from '../../utils/atom';
 
 const Main = () => {
 	const [checks1, setCheck1] = useState(0);
@@ -19,6 +22,12 @@ const Main = () => {
 	const [checks31, setCheck31] = useState(0);
 	const [checks32, setCheck32] = useState(0);
 	const [checks33, setCheck33] = useState(0);
+	const [modalOpen, setModalOpen] = useRecoilState(modalControl);
+
+
+	const closeModal = () => {
+		setModalOpen(false);
+	}
 	let dupCheckList = [];
 
 	const btnActivate = (idx, id) => {
@@ -77,6 +86,10 @@ const Main = () => {
 				<Navbar />
 			</nav>
 			<div className='mainContent'>
+				<LoginModal open = {modalOpen} close = {closeModal}>
+						당신의 페스티벌 취향을 찾아, 페스티발람!
+						지금 바로 로그인하세요 ! 
+				</LoginModal>
 				<div className='mainHome'>
 					<div className='mainHomeBody'>
 						<div className='mainHomeContent'>

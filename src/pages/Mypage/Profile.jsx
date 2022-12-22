@@ -1,4 +1,4 @@
-import React, {useContext,useState,useEffect,useRef,useMemo} from 'react';
+import React, {useContext,useState,useEffect,useRef} from 'react';
 import "../../styles/Profile.css";
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';

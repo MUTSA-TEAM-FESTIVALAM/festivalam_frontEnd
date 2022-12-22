@@ -8,6 +8,11 @@ export const festivals = atom({
 	})
 });
 
+export const modalControl = atom({
+    key: 'modalControl',
+    default : false,
+})
+
 export const postListAtom = atom({
     key: "postList",
     default: [],
