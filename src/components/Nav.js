@@ -6,10 +6,13 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 import { useRecoilState, useSetRecoilState } from 'recoil';
 import { modalControl } from '../utils/atom';
+import { useContext } from 'react';
+import userContext from './../context/index';
 
 function Navbar(props) {
 	const [tab, setTab] = useState('');
 	const setModalOpen = useSetRecoilState(modalControl);
+	let userData = useContext(userContext);
 	
 	const openModal = () => {
 		setModalOpen(true);
@@ -58,7 +61,7 @@ function Navbar(props) {
 			</div>
 			<div className='line'></div>
 			<div className='buttons'>
-					<button className='navBtn' onClick = {openModal}>로그인</button>
+					{userData.user.logined ? <button className = 'navBtn' onClick = {openModal}>로그아웃</button> : <button className='navBtn' onClick = {openModal}>로그인</button>}
 			</div>
 		</div>
 	);

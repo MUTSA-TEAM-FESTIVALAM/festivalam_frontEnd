@@ -40,6 +40,23 @@ export const postSelector = selector({
     }
 });
 
+export const tokenSlice = atom({
+    key:"authToken",
+    default:{
+        authenticated:false,
+        accessToken:null,
+        expireTime:null
+    },
+})
+
+export const accessToken = selector({
+    key : 'ACCESS_TOKEN',
+    get : ({get}) => {
+        const auth = get(tokenSlice);
+        return 
+    }
+})
+
 export const replSelector = selector({
     key:"replSelector",
     get:async({get})=>{

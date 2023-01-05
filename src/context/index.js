@@ -4,7 +4,8 @@ const userContext = createContext({
     user: { kakaoId : "", name: "", email: "", like: "", 
     post:"", 
     reply: "",
-    logined : false },
+    logined : false,
+    accesstoken : "" },
     setUser: () => {}
 });
 

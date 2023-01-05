@@ -15,6 +15,8 @@ import LoginModal from '../Login/LoginModal';
 import ScrollToTop from '../../components/ScrollToTop';
 import { useRecoilState } from 'recoil';
 import { modalControl } from '../../utils/atom';
+import { useEffect } from 'react';
+import axios from 'axios';
 
 const Main = () => {
 	const [checks1, setCheck1] = useState(0);
@@ -79,6 +81,13 @@ const Main = () => {
 	const mainThemeRef = useRef(null);
 
 	const scrollToElement = () => mainThemeRef.current.scrollIntoView({ behavior: 'smooth' });
+
+	useEffect(() => {
+		axios.get(`http://43.200.245.75:3306/festivalapp/festivals/`,)
+        .then(response => {
+			console.log(response)
+        })
+	})
 
 	return (
 		<div className='main'>

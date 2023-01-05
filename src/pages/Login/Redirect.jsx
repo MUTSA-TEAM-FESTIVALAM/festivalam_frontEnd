@@ -4,27 +4,43 @@ import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import userContext from "../../context/index";
 import Profile from '../Mypage/Profile';
+import { useRecoilState } from 'recoil';
+import { isLogined } from '../../utils/atom';
 
 const Redirect = () => {
-    const [signup, setSignup] = useState(false);
+    //const [signup, setSignup] = useState(false);
     const context = useContext(userContext);
-
     const PARAMS = new URL(document.location).searchParams;
     const navigate = useNavigate();
-    const KAKAO_CODE = PARAMS.get('code');
-    console.log("인가코드찍기 : "+PARAMS.get('code'));
+    const KAKAO_CODE = PARAMS.get('code'); 
+    const [isLogin, setLogin] = useRecoilState(isLogined);
+    //인가코드를 KAKAO_CODE라는 이름으로 가져옵니다. 
 
 
     const sendAccessCode = () => { /*인가코드*/
         /*axios.post(`http://127.0.0.1:8000/api/kakaocode`,*/
-        axios.post(`http://172.17.195.227:8000/accounts/kakao/callback/`,
+        axios.post(`http://127.0.0.1:8000/accounts/kakao/callback/`,
         {
-            code : KAKAO_CODE,}).then(response => {  
-              const kakao_id = response.data.kakao_id; //카카오 아이디 세팅
-              context.setUser({
-                logined : true
-              })
-              getProfile(kakao_id)
+            code : KAKAO_CODE,
+            headers : {"Content=Type" : `application/json`}}).then(response => {  
+              if(response.status === 201) {
+                const jwtAccessToken = response.data.jwt_access_token;
+                const jwtRefreshToken = response.data.jwt_refresh_token;
+                const kakao_id = response.data.kakao_id;
+                //getProfile(kakao_id);
+                context.setUser({
+                    logined : true
+                  })
+                axios.defaults.headers.common['Authorization'] = 'Bearer ' + jwtAccessToken; //헤더에 access token 저장
+                //localStorage.setItem('JwtToken', jwtAccessToken);
+                localStorage.setItem('JwtRefresh', jwtRefreshToken);
+                navigate('/')
+              }
+              else {
+                console.log("login request fail");
+              }
+
+              
               /*context.setUser({
                 kakaoId : response.data.code,
                 name : response.data.code,
@@ -35,9 +51,8 @@ const Redirect = () => {
                 logined : true,
                 //post: response.data.code,
               });*/
-              
-              localStorage.setItem('token',response.data.kakao_id);
-              const TOKEN = localStorage.getItem("token")
+              console.log(response.data);
+              //localStorage.setItem('token',response.data.kakao_id);
               
         },  
         {xsrfCookieName: 'csrftoken', xrfHeaderName: 'X-CSRFToken'})
@@ -45,8 +60,7 @@ const Redirect = () => {
     
     const getProfile = (kakao_id) => {
         kakao_id = Number(kakao_id)
-        console.log(kakao_id)
-        axios.get(`http://172.17.195.227:8000/accounts/kakao/user/${kakao_id}/profile/`,)
+        axios.get(`http://127.0.0.1:8000/accounts/kakao/user/${kakao_id}/profile/`,)
         .then(response => {
             localStorage.setItem('kakaoId',response.data.user_profile[0].fields.kakao_id);
             localStorage.setItem('name',response.data.user_profile[0].fields.username);
@@ -63,7 +77,7 @@ const Redirect = () => {
                 reply : response.data.user_comment,
                 logined : true
               })
-            console.log(JSON.stringify(context.user.reply))
+            //console.log(JSON.stringify(context.user.reply))
             navigate('/mypage')
         })
         .catch(function (error){

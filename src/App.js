@@ -4,7 +4,6 @@ import userContext from './context';
 import Main from './pages/Main/Main';
 import Detail from './pages/Festival/Detail';
 import Calendar from './pages/Calendar/Calendar';
-import Login from './pages/Login/Login';
 import Redirect from './pages/Login/Redirect';
 import Profile from './pages/Mypage/Profile';
 import FestList from './pages/Festival/FestList';
@@ -49,7 +48,6 @@ function App() {
 				<Routes>
 					<Route path='/' element={<Main />} />
 					<Route path='/calendar' element={<Calendar />} />
-					<Route path='/login' element={<Login />} />
 					<Route path='/redirect' element={<Redirect></Redirect>} />
 					<Route path='/mypage' element={<Profile></Profile>}></Route>
 					<Route path='/festlist' element={<FestList />} />
