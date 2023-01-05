@@ -2,45 +2,67 @@ import React, {useContext,useState,useEffect,useRef} from 'react';
 import "../../styles/Profile.css";
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-import userContext from "../../context/index";
+import userContext from "../../context/User";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser, faLock, faHeartCircleCheck, faPenToSquare, faComment} from "@fortawesome/free-solid-svg-icons";
 import Navbar from '../../components/Nav';
+import { useRecoilState } from 'recoil';
+import { LoginState } from '../../utils/atom';
+import { accessToken } from '../../utils/atom';
+import useAuth from '../../hooks/useAuth';
 
-const Profile = ( ) => {
+const Profile = ({props}) => {
+    const [isLogin, setLogin] = useRecoilState(LoginState);
+    const [token, setToken] = useRecoilState(accessToken);
     const context = useContext(userContext);
     const [isEdit, setIsEdit] = useState(false); //수정버튼 일단은 false 
     const [localContent, setLocalContent] = useState(localStorage.getItem('name')); //수정하기 textarea값 저장 위함
-    const localInput = useRef();
     const [checkList, setCheckList] = useState([]);
     const [checkListReply, setCheckListReply] = useState([])
     const [selectedBread, setSelectedBread] = useState([]);
-    const [kakaoId, setKakaoId] = useState(localStorage.getItem('kakaoId'))
-    const [post, setPost] = useState(JSON.parse(localStorage.getItem('post')))
-    const [name,setName] = useState(localStorage.getItem('name'))
-    const [email,setEmail] = useState(localStorage.getItem('email'))
-    const [like, setLike] = useState(localStorage.getItem('like'))
-    const [reply, setReply] = useState(JSON.parse(localStorage.getItem('reply')))
+    const [kakaoId, setKakaoId] = useState("")
+    const [post, setPost] = useState("")
+    const [name,setName] = useState("")
+    const [email,setEmail] = useState("")
+    const [like, setLike] = useState("")
+    const [reply, setReply] = useState("")
     const navigate = useNavigate();
     const [isPostShown, setIsPostShown] = useState(false); //체크박스 보이기 안보이기
     const [isReplyShown, setIsReplyShown] = useState(false); //체크박스 보이기 안보이기
     const [deleteButton, setDelete] = useState("관리하기");
     const [deleteButtonReply, setDeleteReply] = useState("관리하기")
+    //const userVaild = useAuth(isLogin)
 
-    
-    const loginCheck = async () => {
+    useEffect(() => {
+      loginCheck()
+      getProfileHandler();
+},[])
+
+  const getProfileHandler = () => {
+    axios.defaults.headers.common['Authorization'] = 'Bearer ' + token;
+    axios.post(`http://127.0.0.1:8000/accounts/kakao/user/profile/`, {
+      refresh_token : localStorage.getItem('JwtRefresh')},
+    { headers: {
+      "Content-Type": `application/json`}
+    },
+  ).then( response => {
+    if(response.status === 201 || response.status === 200) {
+    setEmail(response.data.user_profile[0].fields.email)
+    setName(response.data.user_profile[0].fields.username)}})
+
+  }
+
+    const loginCheck = () => {
         console.log("로그인 체크 수행!")
-        var logincheck = Boolean(localStorage.getItem("logined"))
-        if(logincheck === true){
-          setKakaoId(Number(localStorage.getItem("kakaoId")))
-          setName(localStorage.getItem("name"))
-          setEmail(localStorage.getItem("email"))
-          setReply(JSON.parse(localStorage.getItem('reply')))
-          setPost(JSON.parse(localStorage.getItem('post')))}
-          console.log("포스트 형식은 이렇게 생겼다요" + JSON.stringify(post))
+        //props.loginCallBack(true);
+        if(isLogin === false) {
+          window.alert("로그인을 해주세요")
+          navigate('/')
+        }
+        //setLogin(userVaild);
     }
-    
 
+    
     const changeSingleBox = (checked, id) => {
       if(checked){
         setCheckList([...checkList, id]);  
@@ -79,13 +101,12 @@ const Profile = ( ) => {
 
 
     const logOut = () => {
-        axios.post(`http://172.17.195.227:8000/accounts/kakao/user/${kakaoId}/unlink/`).then(response => {
-        context.setUser({ kakaoId : "", name: "", email: "", like: "", post: "", reply: "", logined:false });
+        axios.post(`http://127.0.0.1:8000/accounts/kakao/user/unlink/`).then(response => {
         window.localStorage.clear();
-        localStorage.setItem('logined',false)
+            setLogin(false);
+            setToken("");
             navigate('/')})}
   
-
 
     const controlPost = (e) => {
         setIsPostShown(current => !current);
@@ -124,7 +145,7 @@ const Profile = ( ) => {
     }
 
     const nameChange = (e) => {
-      setName(name.concat(e.target.value))
+      setName(e.target.value)
     }
 
     const toggleIsEdit = () => setIsEdit(!isEdit); //호출되면 setIsEdit()이 되고 수정상태 변경
@@ -133,26 +154,23 @@ const Profile = ( ) => {
       if(window.confirm("닉네임을 수정하시겠습니까?")){
         onEdit(localContent);
         toggleIsEdit();
-        axios.post(`http://172.17.195.227:8000/accounts/kakao/user/${kakaoId}/profile/`,{
-          name : localContent}).then(response => {
-              context.setUser({
-                name: response.data.nickname
-              })
-            })
-
-    }}
-
-    const onEdit = (newContent) => {
-      setName(newContent)
-      localStorage.setItem('name',newContent)
-      //axios 쏴주는곳
-    }
-
+        axios.post(`http://127.0.0.1:8000/accounts/kakao/user/update/nickname`,{
+          name : name}).then(response => {
+            if (response.status === 201 || response.status === 200){
+              setName(name);
+            }
+            else {
+              window.alert("이름 바꾸기에 실패하였습니다.")
+            }
+          })
+        }}
     
-    useEffect(() => {
-      loginCheck();
-},[name])
-    
+
+  const onEdit = (newContent) => {
+    setName(newContent)
+    //axios 쏴주는곳
+  }
+
     
     return (
         <>
@@ -167,8 +185,7 @@ const Profile = ( ) => {
                         isEdit 
                           ? (<>
                                 <textarea className = "nameText"
-                                  ref = {localInput}
-                                  value = {localContent} //수정내용 기본값 설정
+                                  value = {name} //수정내용 기본값 설정
                                   onChange={(e) => setLocalContent(e.target.value)}
                                 ></textarea>
                                   </>) :

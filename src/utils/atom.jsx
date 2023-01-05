@@ -1,5 +1,8 @@
 import { atom, selector } from 'recoil';
 import festivallist from './list.json';
+import { recoilPersist } from 'recoil-persist';
+
+const { persistAtom } = recoilPersist();
 
 export const festivals = atom({
 	key: 'festivals',
@@ -40,22 +43,18 @@ export const postSelector = selector({
     }
 });
 
-export const tokenSlice = atom({
-    key:"authToken",
-    default:{
-        authenticated:false,
-        accessToken:null,
-        expireTime:null
-    },
+export const LoginState = atom({
+    key: "LoginState",
+    default: false,
+    effects_UNSTABLE: [persistAtom]
 })
 
-export const accessToken = selector({
-    key : 'ACCESS_TOKEN',
-    get : ({get}) => {
-        const auth = get(tokenSlice);
-        return 
-    }
+export const accessToken = atom({
+    key: "accessToken",
+    default: "",
 })
+
+
 
 export const replSelector = selector({
     key:"replSelector",

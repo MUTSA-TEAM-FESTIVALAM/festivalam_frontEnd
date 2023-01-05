@@ -1,20 +1,23 @@
 import React, {useEffect} from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import EachPost from '../../components/Community/EachPost';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowLeft, faArrowRight, faPenToSquare } from '@fortawesome/free-solid-svg-icons';
 import axios from 'axios';
 import Navbar from '../../components/Nav';
 import { useRecoilState } from 'recoil';
-import { postListAtom, setPageAtom, setPagesAtom } from '../../utils/atom';
+import { LoginState, postListAtom, setPageAtom, setPagesAtom } from '../../utils/atom';
 
 function Cmreview() {
 
     const [postList, setPostList] = useRecoilState(postListAtom);
     const [page, setPage] = useRecoilState(setPageAtom);
     const [pages, setPages] = useRecoilState(setPagesAtom);
+    const [isLogin, setLogin] = useRecoilState(LoginState);
+    const navigate = useNavigate();
 
     useEffect(() => {
+        loginCheck()
         axios.get(`http://172.17.195.227:8000/festivalapp/category/review/`).then(response => {
             const lastPage = Math.ceil(response.data.count / 7);
             const tempPages = [];
@@ -26,6 +29,15 @@ function Cmreview() {
         })
     }, []);
 
+    const loginCheck = () => {
+        console.log("로그인 체크 수행!")
+        //props.loginCallBack(true);
+        if(isLogin === false) {
+          window.alert("로그인을 한 이후 festivalarm을 이용해보세요!")
+          navigate('/')
+        }
+        //setLogin(userVaild);
+    }
     return (
         <div id="center">
             <nav><Navbar/></nav>
