@@ -14,7 +14,7 @@ import Navbar from '../../components/Nav';
 import LoginModal from '../Login/LoginModal';
 import ScrollToTop from '../../components/ScrollToTop';
 import { useRecoilState } from 'recoil';
-import { modalControl } from '../../utils/atom';
+import { LoginState, modalControl } from '../../utils/atom';
 import { useEffect } from 'react';
 import axios from 'axios';
 
@@ -25,6 +25,7 @@ const Main = () => {
 	const [checks32, setCheck32] = useState(0);
 	const [checks33, setCheck33] = useState(0);
 	const [modalOpen, setModalOpen] = useRecoilState(modalControl);
+	const [isLogin, setLogin] = useRecoilState(LoginState);
 
 
 	const closeModal = () => {
@@ -64,16 +65,21 @@ const Main = () => {
 	};
 
 	const toAPI = () => {
-		dupCheckList.push(checks1);
-		dupCheckList.push(checks2);
-		if (checks31) {
-			dupCheckList.push(checks31);
+		if (isLogin === false) {
+			window.alert("로그인 이후 이용가능한 서비스입니다.")
 		}
-		if (checks32) {
-			dupCheckList.push(checks32);
-		}
-		if (checks33) {
-			dupCheckList.push(checks33);
+		else {
+			dupCheckList.push(checks1);
+			dupCheckList.push(checks2);
+			if (checks31) {
+				dupCheckList.push(checks31);
+			}
+			if (checks32) {
+				dupCheckList.push(checks32);
+			}
+			if (checks33) {
+				dupCheckList.push(checks33);
+			}
 		}
 
 		console.log(dupCheckList);
@@ -115,8 +121,8 @@ const Main = () => {
 										<path d='M58 13.0909V0L34 14.5455L10 0V13.0909L34 27.6364L58 13.0909Z' fill='white' />
 									</g>
 									<defs>
-										<filter id='filter0_d_66_109' x='0' y='0' width='68' height='76' filterUnits='userSpaceOnUse' color-interpolation-filters='sRGB'>
-											<feFlood flood-opacity='0' result='BackgroundImageFix' />
+										<filter id='filter0_d_66_109' x='0' y='0' width='68' height='76' filterUnits='userSpaceOnUse' colorInterpolationFilters='sRGB'>
+											<feFlood floodOpacity='0' result='BackgroundImageFix' />
 											<feColorMatrix in='SourceAlpha' type='matrix' values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0' result='hardAlpha' />
 											<feOffset dy='18' />
 											<feGaussianBlur stdDeviation='5' />
@@ -163,12 +169,12 @@ const Main = () => {
 												fill='black'
 											/>
 											<rect x='10' y='10' width='37' height='24' rx='5' fill='#5D0EC0' />
-											<rect x='98' y='70' width='37' height='24' rx='5' fill='#5D0EC0' fill-opacity='0.35' />
-											<rect x='54' y='70' width='37' height='24' rx='5' fill='#5D0EC0' fill-opacity='0.35' />
-											<rect x='10' y='70' width='37' height='24' rx='5' fill='#5D0EC0' fill-opacity='0.35' />
-											<rect x='98' y='40' width='37' height='24' rx='5' fill='#5D0EC0' fill-opacity='0.65' />
-											<rect x='54' y='40' width='37' height='24' rx='5' fill='#5D0EC0' fill-opacity='0.65' />
-											<rect x='10' y='40' width='37' height='24' rx='5' fill='#5D0EC0' fill-opacity='0.65' />
+											<rect x='98' y='70' width='37' height='24' rx='5' fill='#5D0EC0' fillOpacity='0.35' />
+											<rect x='54' y='70' width='37' height='24' rx='5' fill='#5D0EC0' fillOpacity='0.35' />
+											<rect x='10' y='70' width='37' height='24' rx='5' fill='#5D0EC0' fillOpacity='0.35' />
+											<rect x='98' y='40' width='37' height='24' rx='5' fill='#5D0EC0' fillOpacity='0.65' />
+											<rect x='54' y='40' width='37' height='24' rx='5' fill='#5D0EC0' fillOpacity='0.65' />
+											<rect x='10' y='40' width='37' height='24' rx='5' fill='#5D0EC0' fillOpacity='0.65' />
 											<rect x='98' y='10' width='37' height='24' rx='5' fill='#5D0EC0' />
 											<rect x='54' y='10' width='37' height='24' rx='5' fill='#5D0EC0' />
 											<line x1='125.997' y1='22.25' x2='146.019' y2='22.25' stroke='black' />

@@ -87,12 +87,12 @@ const Theme = () => {
 											fill='black'
 										/>
 										<rect x='10' y='10' width='37' height='24' rx='5' fill='#5D0EC0' />
-										<rect x='98' y='70' width='37' height='24' rx='5' fill='#5D0EC0' fill-opacity='0.35' />
-										<rect x='54' y='70' width='37' height='24' rx='5' fill='#5D0EC0' fill-opacity='0.35' />
-										<rect x='10' y='70' width='37' height='24' rx='5' fill='#5D0EC0' fill-opacity='0.35' />
-										<rect x='98' y='40' width='37' height='24' rx='5' fill='#5D0EC0' fill-opacity='0.65' />
-										<rect x='54' y='40' width='37' height='24' rx='5' fill='#5D0EC0' fill-opacity='0.65' />
-										<rect x='10' y='40' width='37' height='24' rx='5' fill='#5D0EC0' fill-opacity='0.65' />
+										<rect x='98' y='70' width='37' height='24' rx='5' fill='#5D0EC0' fillOpacity='0.35' />
+										<rect x='54' y='70' width='37' height='24' rx='5' fill='#5D0EC0' fillOpacity='0.35' />
+										<rect x='10' y='70' width='37' height='24' rx='5' fill='#5D0EC0' fillOpacity='0.35' />
+										<rect x='98' y='40' width='37' height='24' rx='5' fill='#5D0EC0' fillOpacity='0.65' />
+										<rect x='54' y='40' width='37' height='24' rx='5' fill='#5D0EC0' fillOpacity='0.65' />
+										<rect x='10' y='40' width='37' height='24' rx='5' fill='#5D0EC0' fillOpacity='0.65' />
 										<rect x='98' y='10' width='37' height='24' rx='5' fill='#5D0EC0' />
 										<rect x='54' y='10' width='37' height='24' rx='5' fill='#5D0EC0' />
 										<line x1='125.997' y1='22.25' x2='146.019' y2='22.25' stroke='black' />
