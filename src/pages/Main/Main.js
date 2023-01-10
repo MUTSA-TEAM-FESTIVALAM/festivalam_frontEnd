@@ -24,10 +24,9 @@ const Main = () => {
 	const [checks33, setCheck33] = useState(0);
 	const [modalOpen, setModalOpen] = useRecoilState(modalControl);
 
-
 	const closeModal = () => {
 		setModalOpen(false);
-	}
+	};
 	let dupCheckList = [];
 
 	const btnActivate = (idx, id) => {
@@ -73,8 +72,6 @@ const Main = () => {
 		if (checks33) {
 			dupCheckList.push(checks33);
 		}
-
-		console.log(dupCheckList);
 	};
 	const mainThemeRef = useRef(null);
 
@@ -86,9 +83,8 @@ const Main = () => {
 				<Navbar />
 			</nav>
 			<div className='mainContent'>
-				<LoginModal open = {modalOpen} close = {closeModal}>
-						당신의 페스티벌 취향을 찾아, 페스티발람!
-						지금 바로 로그인하세요 ! 
+				<LoginModal open={modalOpen} close={closeModal}>
+					당신의 페스티벌 취향을 찾아, 페스티발람! 지금 바로 로그인하세요 !
 				</LoginModal>
 				<div className='mainHome'>
 					<div className='mainHomeBody'>
