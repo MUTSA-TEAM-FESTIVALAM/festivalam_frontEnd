@@ -6,14 +6,15 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 import { useRecoilState, useSetRecoilState } from 'recoil';
 import { modalControl } from '../utils/atom';
+import styled from 'styled-components';
 
 function Navbar(props) {
 	const [tab, setTab] = useState('');
 	const setModalOpen = useSetRecoilState(modalControl);
-	
+
 	const openModal = () => {
 		setModalOpen(true);
-	}
+	};
 
 	return (
 		<div className='navbar'>
@@ -58,7 +59,9 @@ function Navbar(props) {
 			</div>
 			<div className='line'></div>
 			<div className='buttons'>
-					<button className='navBtn' onClick = {openModal}>로그인</button>
+				<button className='navBtn' onClick={openModal}>
+					로그인
+				</button>
 			</div>
 		</div>
 	);
