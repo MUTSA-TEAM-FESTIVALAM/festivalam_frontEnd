@@ -3,7 +3,7 @@ import '../../styles/WritePost.css';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import Navbar from '../../components/Nav';
-import userContext from '../../context/index';
+import userContext from '../../context/User';
 import { useRecoilState } from 'recoil';
 import { finalValueAtom } from '../../utils/atom.jsx';
 
