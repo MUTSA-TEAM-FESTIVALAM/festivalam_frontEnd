@@ -12,8 +12,9 @@ import image6 from '../../img/fireCraker/image6.png';
 import image7 from '../../img/fireCraker/image7.png';
 import Navbar from '../../components/Nav';
 import LoginModal from '../Login/LoginModal';
-import ScrollToTop from '../../components/ScrollToTop';
 import { useRecoilState } from 'recoil';
+import { modalControl } from '../../utils/atom';
+import TagList from '../../components/Main/TagList';
 import { LoginState, modalControl } from '../../utils/atom';
 import { useEffect } from 'react';
 import axios from 'axios';
@@ -27,41 +28,8 @@ const Main = () => {
 	const [modalOpen, setModalOpen] = useRecoilState(modalControl);
 	const [isLogin, setLogin] = useRecoilState(LoginState);
 
-
 	const closeModal = () => {
 		setModalOpen(false);
-	}
-	let dupCheckList = [];
-
-	const btnActivate = (idx, id) => {
-		if (id === 1) {
-			setCheck1(idx);
-		}
-		if (id === 2) {
-			setCheck2(idx);
-		}
-	};
-
-	const btnToggle = (idx, id) => {
-		if (id === 1) {
-			if (checks31 !== 0) {
-				setCheck31(0);
-			} else {
-				setCheck31(idx);
-			}
-		} else if (id === 2) {
-			if (checks32 !== 0) {
-				setCheck32(0);
-			} else {
-				setCheck32(idx);
-			}
-		} else if (id === 3) {
-			if (checks33 !== 0) {
-				setCheck33(0);
-			} else {
-				setCheck33(idx);
-			}
-		}
 	};
 
 	const toAPI = () => {
@@ -101,9 +69,8 @@ const Main = () => {
 				<Navbar />
 			</nav>
 			<div className='mainContent'>
-				<LoginModal open = {modalOpen} close = {closeModal}>
-						당신의 페스티벌 취향을 찾아, 페스티발람!
-						지금 바로 로그인하세요 ! 
+				<LoginModal open={modalOpen} close={closeModal}>
+					당신의 페스티벌 취향을 찾아, 페스티발람! 지금 바로 로그인하세요 !
 				</LoginModal>
 				<div className='mainHome'>
 					<div className='mainHomeBody'>
@@ -146,6 +113,7 @@ const Main = () => {
 				</div>
 				<div className='mainTheme' ref={mainThemeRef}>
 					<div className='mainThemeBody'>
+						<TagList />
 						<div className='mainThemeContent'>
 							<h1 className='mainThemeText'>궁금한 테마를 선택한 후 검색 버튼을 눌러보세요!</h1>
 							<form className='tagSearchForm'>

@@ -53,7 +53,11 @@ function Festival({ festivalId }) {
 	const festival = festivallist.filter((festival) => festival.id === festivalId)[0];
 
 	let date = '날짜미정';
-	const start = new Date(Number(festival.time_start.substring(0, 4)), Number(festival.time_start.substring(5, 7)) - 1, Number(festival.time_start.substring(8, 10)));
+	const start = new Date(
+		Number(festival.time_start.substring(0, 4)),
+		Number(festival.time_start.substring(5, 7)) - 1,
+		Number(festival.time_start.substring(8, 10))
+	);
 	const end = new Date(Number(festival.time_end.substring(0, 4)), Number(festival.time_end.substring(5, 7)) - 1, Number(festival.time_end.substring(8, 10)));
 	const startYear = start.getFullYear();
 	const endYear = end.getFullYear();
