@@ -1,5 +1,8 @@
 import { atom, selector } from 'recoil';
 import festivallist from './list.json';
+import { recoilPersist } from 'recoil-persist';
+
+const { persistAtom } = recoilPersist();
 
 export const festivals = atom({
 	key: 'festivals',
@@ -39,6 +42,19 @@ export const postSelector = selector({
         //여기 채워넣기
     }
 });
+
+export const LoginState = atom({
+    key: "LoginState",
+    default: false,
+    effects_UNSTABLE: [persistAtom]
+})
+
+export const accessToken = atom({
+    key: "accessToken",
+    default: "",
+})
+
+
 
 export const replSelector = selector({
     key:"replSelector",

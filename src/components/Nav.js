@@ -7,14 +7,21 @@ import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 import { useRecoilState, useSetRecoilState } from 'recoil';
 import { modalControl } from '../utils/atom';
 import styled from 'styled-components';
+import { LoginState } from '../utils/atom';
+import { useNavigate } from 'react-router-dom';
 
 function Navbar(props) {
+	const navigate = useNavigate();
 	const [tab, setTab] = useState('');
 	const setModalOpen = useSetRecoilState(modalControl);
-
+	const [isLogin, setLogin] = useRecoilState(LoginState);
 	const openModal = () => {
 		setModalOpen(true);
 	};
+
+	const routeMypage = () => {
+		navigate('/mypage')
+	}
 
 	return (
 		<div className='navbar'>
@@ -59,9 +66,7 @@ function Navbar(props) {
 			</div>
 			<div className='line'></div>
 			<div className='buttons'>
-				<button className='navBtn' onClick={openModal}>
-					로그인
-				</button>
+					{isLogin ? <button className = 'navBtn' onClick = {routeMypage}>마이페이지</button> : <button className='navBtn' onClick = {openModal}>로그인</button>}
 			</div>
 		</div>
 	);

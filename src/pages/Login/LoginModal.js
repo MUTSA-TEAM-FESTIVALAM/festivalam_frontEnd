@@ -1,5 +1,6 @@
 import React from 'react';
 import '../../styles/LoginModal.css'
+import kakaoBtnImg from '../../img/kakao_login.png'
 
 const REDIRECT_URL =  "http://localhost:3000/redirect";
 const KAKAO_CLIENT_ID = process.env.REACT_APP_KAKAO_CLIENT_ID;
@@ -8,10 +9,7 @@ export const KAKAO_AUTH_URL = `https://kauth.kakao.com/oauth/authorize?client_id
 
 const LoginModal = (props) => {
   // 열기, 닫기, 모달 헤더 텍스트를 부모로부터 받아옴
-  const { open, close, header } = props;
-  const handleLogin = () => {
-    window.location.href = KAKAO_AUTH_URL;
-};
+  const { open, close } = props;
 
   return (
     // 모달이 열릴때 openModal 클래스가 생성된다.
@@ -23,9 +21,9 @@ const LoginModal = (props) => {
             </button>
           <main>{props.children}</main>
           <footer>
-            <button className="close" onClick = {handleLogin}>
-              카카오로 로그인하기
-            </button>
+            <a href = {KAKAO_AUTH_URL}>
+                    <img src = {kakaoBtnImg} alt = "kakao-login-btn"/>
+              </a>
           </footer>
         </section>
       ) : null}
