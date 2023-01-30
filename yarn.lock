@@ -1246,6 +1246,13 @@
   dependencies:
     "prop-types" "^15.8.1"
 
+"@fullcalendar/core@^6.0.3":
+  version "6.0.3"
+  resolved "https://registry.yarnpkg.com/@fullcalendar/core/-/core-6.0.3.tgz#cb2d78e747d9baf8a609d2cc54c6a7cfe2e2f833"
+  integrity sha512-4REVuYAxqJjXpLhOC0oABap4Xl8gmykCsHgL61Yy3rdCwWVx/SoE5L3hs8ZUCmsRrgSZOzgiH8sle87RaGi8iw==
+  dependencies:
+    preact "^10.0.5"
+
 "@humanwhocodes/config-array@^0.9.2":
   "integrity" "sha512-ObyMyWxZiCu/yTisA7uzx81s40xR2fD5Cg/2Kq7G02ajkNubJf6BopgDTmDyc3U7sXpNKM8cYOw7s7Tyr+DnCw=="
   "resolved" "https://registry.npmjs.org/@humanwhocodes/config-array/-/config-array-0.9.5.tgz"
