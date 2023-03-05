@@ -254,9 +254,11 @@ const ThemeContainer = styled.div`
 `;
 
 const TopBoard = styled.div`
+	align-self: flex-end;
+	margin-right: 9rem;
+	width: 35rem;
 	display: flex;
-	justify-content: flex-end;
-	gap: 10.3186vw;
+	justify-content: space-between;
 `;
 
 const SubmitBtn = styled.button`

@@ -16,7 +16,12 @@ function Navbar(props) {
 	const location = useLocation();
 
 	useEffect(() => {
-		setTab(location.pathname.split('/')[1]);
+		const path = location.pathname.split('/')[1];
+		if (path === 'detail') {
+			setTab('festlist');
+		} else {
+			setTab(path);
+		}
 	}, []);
 
 	const openModal = () => {
