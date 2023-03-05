@@ -22,17 +22,10 @@ export default Theme;
 
 const ThemeWrapper = styled.div`
 	display: flex;
+	justify-content: space-between;
 	background: linear-gradient(rgba(189, 106, 184, 0.8), rgba(67, 0, 131, 0.8));
-	background-repeat: no-repeat;
-	margin: 0;
-	text-align: center;
-	overflow-y: hidden;
+	position: relative;
 
-	nav {
-		color: #5d0ec0;
-		width: 20%;
-		box-shadow: none;
-	}
 	img {
 		position: absolute;
 		bottom: 0rem;

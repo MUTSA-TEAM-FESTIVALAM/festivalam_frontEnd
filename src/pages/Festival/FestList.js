@@ -37,9 +37,7 @@ const FestList = () => {
 
 	return (
 		<ListWrapper>
-			<nav>
-				<Navbar />
-			</nav>
+			<Navbar />
 			<ListContainer>
 				<ListHeader>
 					<select id='listSelect' onChange={onChangeHanlder} value={Content}>
@@ -68,14 +66,6 @@ export default FestList;
 const ListWrapper = styled.div`
 	display: flex;
 	justify-content: space-between;
-
-	nav {
-		background-color: white;
-		color: #5d0ec0;
-		width: 15rem;
-		position: relative;
-		box-shadow: 0.1rem 0.1rem 0.7rem rgb(200, 200, 200);
-	}
 `;
 
 const ListContainer = styled.div`

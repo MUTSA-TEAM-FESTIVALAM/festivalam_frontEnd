@@ -25,11 +25,12 @@
 	color: white;
 	font-weight: 600;
 	text-shadow: 0 0.25rem 0.25rem rgba(0, 0, 0, 0.25);
-	margin-top: 10rem;
+	margin-top: 29vh;
 }
 
 .mainHomeBody h1 {
 	font-size: 2.5rem;
+	margin-bottom: 3.6133vh;
 }
 
 .mainHomeText span {
@@ -38,6 +39,7 @@
 
 .mainHomeContent p {
 	font-size: 1.5rem;
+	margin-bottom: 2.5391vh;
 }
 
 .mainHomeBody img {

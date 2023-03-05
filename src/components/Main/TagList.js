@@ -60,11 +60,11 @@ const TagList = () => {
 	return (
 		<ThemeWrapper>
 			<h1>궁금한 테마를 선택한 후 검색 버튼을 눌러보세요!</h1>
-			<form>
-				<SubmitBtn type='button' onClick={toAPI}>
-					검색
-				</SubmitBtn>
-				<ThemeContainer>
+			<ThemeForm>
+				<TopBoard>
+					<SubmitBtn type='button' onClick={toAPI}>
+						검색
+					</SubmitBtn>
 					<SvgCard>
 						<svg width='290' height='90' viewBox='0 0 319 104' fill='none' xmlns='http://www.w3.org/2000/svg'>
 							<rect width='319' height='104' fill='white' />
@@ -94,6 +94,8 @@ const TagList = () => {
 							<line x1='126' y1='81.5' x2='146.022' y2='81.5' stroke='black' />
 						</svg>
 					</SvgCard>
+				</TopBoard>
+				<ThemeContainer>
 					<ThemeBtn type='button' onClick={() => btnActivate(1, 1)} style={checks1 === 1 ? { activeStyle } : {}}>
 						<p className='emogi'>🔥 🤬 🤛</p>
 						<div className={'mainThemetext' + (checks1 === 1 ? ' active' : '')}>
@@ -185,7 +187,7 @@ const TagList = () => {
 						</div>
 					</ThemeBtn>
 				</ThemeContainer>
-			</form>
+			</ThemeForm>
 		</ThemeWrapper>
 	);
 };
@@ -193,17 +195,17 @@ const TagList = () => {
 export default TagList;
 
 const ThemeWrapper = styled.div`
+	width: 100%;
+	padding-top: 4.4922vh;
 	text-align: center;
 	color: white;
 	font-weight: 600;
 	position: absolute;
-	top: 1rem;
 	text-shadow: 0 0.25rem 0.25rem rgba(0, 0, 0, 0.25);
-
 	h1 {
-		margin: 0;
-		margin-top: 1rem;
-		margin-bottom: 1.8rem;
+		font-weight: 600;
+		font-size: 2.7701vw;
+		margin-bottom: 3.7109vh;
 	}
 `;
 
@@ -251,16 +253,22 @@ const ThemeContainer = styled.div`
 	grid-gap: 2rem;
 `;
 
+const TopBoard = styled.div`
+	display: flex;
+	justify-content: flex-end;
+	gap: 10.3186vw;
+`;
+
 const SubmitBtn = styled.button`
-	border-radius: 3.1rem;
 	border: none;
 	background-color: white;
 	color: black;
-	width: 8rem;
-	height: 3.5rem;
 	font-weight: 600;
 	line-height: 2.8rem;
-	font-size: 1.8rem;
+	font-size: 2.0776vw;
+	width: 10.1108vw;
+	height: 4.6399vw;
+	border-radius: 3.4626vw;
 	cursor: pointer;
 	margin-bottom: 2rem;
 	&:hover {
@@ -269,8 +277,12 @@ const SubmitBtn = styled.button`
 	}
 `;
 
-const SvgCard = styled.div`
-	position: absolute;
-	right: 0%;
-	top: -6.7rem;
+const SvgCard = styled.div``;
+
+const ThemeForm = styled.form`
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	align-items: center;
 `;
