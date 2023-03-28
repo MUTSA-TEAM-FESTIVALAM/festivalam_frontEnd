@@ -12,8 +12,8 @@ const Theme = () => {
 			</nav>
 			<ThemeBody>
 				<TagList />
+				<BackImg src={mainImg} alt='backgroundImg' />
 			</ThemeBody>
-			<img src={mainImg} alt='mainImg'></img>
 		</ThemeWrapper>
 	);
 };
@@ -22,33 +22,27 @@ export default Theme;
 
 const ThemeWrapper = styled.div`
 	display: flex;
+	justify-content: space-between;
 	background: linear-gradient(rgba(189, 106, 184, 0.8), rgba(67, 0, 131, 0.8));
-	background-repeat: no-repeat;
-	margin: 0;
-	text-align: center;
-	overflow-y: hidden;
-
-	nav {
-		color: #5d0ec0;
-		width: 20%;
-		box-shadow: none;
-	}
-	img {
-		position: absolute;
-		bottom: 0rem;
-		width: 83.4%;
-		z-index: 1;
-		margin-left: 15rem;
-	}
+	position: relative;
+	width: 100%;
+	height: 100%;
 `;
 
 const ThemeBody = styled.div`
+	margin-left: 18rem;
 	display: flex;
 	flex-direction: column;
-	width: 100%;
 	position: relative;
 	justify-content: center;
 	align-items: center;
 	z-index: 2;
+	width: 100%;
 	height: 100vh;
+`;
+
+const BackImg = styled.img`
+	width: 100%;
+	overflow-x: hideen;
+	margin-top: auto;
 `;

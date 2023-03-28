@@ -13,266 +13,6 @@ import { festivals } from '../../utils/atom';
 
 const tags = ['사운드가 빵빵해요', '스트레스를 싹 날려버려요', '인생샷을 건질 수 있어요', '록'];
 
-const Wrapper = styled.div`
-	display: flex;
-	overflow-y: scroll;
-	font-family: 'Noto Sans KR', sans-serif;
-	nav {
-		background-color: white;
-		color: #5d0ec0;
-
-		width: 15rem;
-		position: relative;
-		box-shadow: 0.1rem 0.1rem 0.7rem rgb(200, 200, 200);
-	}
-`;
-
-const Main = styled.div`
-	position: relative;
-	background-size: cover;
-	background-repeat: no-repeat;
-	margin: 0 auto;
-	text-align: center;
-	display: flex;
-	flex-direction: column;
-	gap: 1rem;
-	padding-left: 2%;
-	height: 200vh;
-`;
-
-const Back = styled.div`
-	background-color: #ffc600;
-	width: 65vw;
-	height: 190vh;
-	box-shadow: 0px 0.25rem 1.25rem rgba(0, 0, 0, 0.25);
-	border-radius: 1.25rem;
-	position: relative;
-	margin-top: 2rem;
-`;
-
-const Container = styled.div`
-	position: absolute;
-	top: 1.5rem;
-	right: 1.5rem;
-	height: 100%;
-	width: 100%;
-	box-shadow: 0px 0.25rem 1.25rem rgba(0, 0, 0, 0.25);
-	border-radius: 1.25rem;
-	background-color: white;
-	display: flex;
-	flex-direction: column;
-	gap: 5rem;
-`;
-
-const Board = styled.div`
-	display: flex;
-	flex-direction: column;
-	width: 100%;
-	gap: 1rem;
-	box-sizing: border-box;
-	padding: 1rem;
-`;
-
-const Box = styled.div`
-	display: flex;
-	padding: 0.5rem;
-	padding-bottom: 0;
-	justify-content: center;
-	text-align: center;
-`;
-
-const Header = styled(Box)`
-	height: 2rem;
-	align-self: flex-end;
-	justify-content: center;
-	padding-top: 0;
-`;
-
-const ZzimBtn = styled.button`
-	display: flex;
-	font-size: 1rem;
-	gap: 0.5rem;
-	height: 2.5rem;
-	width: 6rem;
-	border: 0.1rem solid #5d0ec0;
-	box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-	color: #5d0ec0;
-	border-radius: 6.25rem;
-	font-weight: bold;
-	justify-content: center;
-	align-content: center;
-	background-color: #ffffff;
-	cursor: pointer;
-	text-align: center;
-	svg {
-		align-self: center;
-	}
-	p {
-		align-self: center;
-		margin: 0;
-		line-height: 100%;
-	}
-	&:hover {
-		background-color: #5d0ec0;
-		color: white;
-	}
-`;
-
-const Body = styled(Box)`
-	padding: 1rem;
-	display: flex;
-	flex-direction: row;
-	justify-content: space-between;
-	gap: 1rem;
-	img {
-		object-fit: contain;
-		max-width: 35%;
-		padding: 1rem;
-	}
-`;
-
-const Content = styled.div`
-	display: flex;
-	flex-direction: column;
-	justify-content: space-around;
-	a {
-		text-decoration: none;
-		color: black;
-		font-weight: bold;
-		font-size: 1.2rem;
-		&:visited {
-			text-decoration: none;
-			color: black;
-			font-weight: bold;
-			font-size: 1.2rem;
-		}
-		&:link {
-			text-decoration: none;
-			color: black;
-			font-weight: bold;
-			font-size: 1.2rem;
-		}
-	}
-`;
-
-const Desc = styled.div`
-	display: flex;
-	flex-direction: column;
-	gap: 1.5rem;
-	margin-bottom: 2rem;
-	font-size: 1.05rem;
-	span {
-		font-weight: bold;
-	}
-`;
-
-const Info = styled.div`
-	font-size: 0.9rem;
-	margin-bottom: 2rem;
-	p {
-		margin: 0;
-		margin-bottom: 1.3rem;
-	}
-`;
-
-const Tag = styled.div`
-	display: flex;
-	flex-direction: row;
-	flex-wrap: wrap;
-	gap: 1rem;
-	align-content: center;
-	justify-content: center;
-	p {
-		background-color: #d9d9d9;
-		padding: 0.5rem 1rem;
-		margin: 0;
-		border-radius: 0.5rem;
-	}
-`;
-
-const Footer = styled(Box)`
-	button {
-		background-color: #5d0ec0;
-		width: 60%;
-		padding: 1rem;
-		text-decoration: none;
-		color: white;
-		border-radius: 0.5rem;
-		font-weight: bold;
-		box-shadow: 0 1rem 1rem -1rem #505050;
-		border: none;
-		font-size: 1rem;
-	}
-	a {
-		&p:first-child {
-			margin-bottom: 0.3rem;
-			font-size: 1rem;
-			line-height: 1.6rem;
-		}
-		&p:nth-child(2) {
-			margin-top: 0;
-			font-size: 0.8rem;
-		}
-	}
-`;
-
-const Check = styled.div`
-	display: flex;
-	flex-direction: column;
-	gap: 2rem;
-`;
-
-const PlaceQ = styled.div`
-	height: 5rem;
-`;
-
-const CheckBtn = styled.div`
-	padding-top: 5.5rem;
-	padding-left: 5rem;
-	padding-right: 3rem;
-	display: flex;
-	justify-content: flex-start;
-	align-items: center;
-	margin-left: 1rem;
-	button {
-		width: auto;
-		height: auto;
-		padding: 0.5rem 1rem;
-		border-radius: 5rem;
-		cursor: pointer;
-		background-color: white;
-		border-color: #5b5a5a;
-		color: #5b5a5a;
-		font-family: 'Noto Sans KR', sans-serif;
-		font-weight: medium;
-		font-size: 0.8rem;
-		border-width: 1px;
-		margin-right: 2rem;
-	}
-`;
-
-const RegisterBox = styled.div`
-	text-align: center;
-	button {
-		margin-top: 4rem;
-		width: 200px;
-		height: 2.5rem;
-		background-color: white;
-		border-radius: 10rem;
-		border-width: 2px;
-		border-color: #5d0ec0;
-		color: #5d0ec0;
-		font-family: 'Noto Sans KR', sans-serif;
-		font-weight: bold;
-		font-size: 15px;
-		cursor: pointer;
-		&:hover {
-			background-color: #5d0ec0;
-			color: white;
-		}
-	}
-`;
-
 const Detail = () => {
 	const params = useParams();
 	const festivallist = useRecoilValue(festivals);
@@ -282,16 +22,30 @@ const Detail = () => {
 	const scrollToElement = () => checkRef.current.scrollIntoView({ behavior: 'smooth' });
 
 	const dayArr = ['일', '월', '화', '수', '목', '금', '토'];
-	const startDate = new Date(Number(festival.time_start.substring(0, 4)), Number(festival.time_start.substring(5, 7)) - 1, Number(festival.time_start.substring(8, 10)));
-	const endDate = new Date(Number(festival.time_end.substring(0, 4)), Number(festival.time_end.substring(5, 7)) - 1, Number(festival.time_end.substring(8, 10)));
+	const startDate = new Date(
+		Number(festival.time_start.substring(0, 4)),
+		Number(festival.time_start.substring(5, 7)) - 1,
+		Number(festival.time_start.substring(8, 10))
+	);
+	const endDate = new Date(
+		Number(festival.time_end.substring(0, 4)),
+		Number(festival.time_end.substring(5, 7)) - 1,
+		Number(festival.time_end.substring(8, 10))
+	);
 	let dateString = `<span>${startDate.getFullYear()}</span>년 <span>${startDate.getMonth() + 1}</span>월 <span>${startDate.getDate()}</span>일(${
 		dayArr[startDate.getDay()]
 	}) ~ <span>${endDate.getFullYear()}</span>년 <span>${endDate.getMonth() + 1}</span>월 <span>${endDate.getDate()}</span>일(${dayArr[endDate.getDay()]})`;
 	const subDate = endDate.getDate() - startDate.getDate();
 	if (subDate === 0) {
-		dateString = `<span>${startDate.getFullYear()}</span>년 <span>${startDate.getMonth() + 1}</span>월 <span>${startDate.getDate()}</span>일(${dayArr[startDate.getDay()]})`;
+		dateString = `<span>${startDate.getFullYear()}</span>년 <span>${startDate.getMonth() + 1}</span>월 <span>${startDate.getDate()}</span>일(${
+			dayArr[startDate.getDay()]
+		})`;
 	}
-	const reserveDate = new Date(Number(festival.ticket_open.substring(0, 4)), Number(festival.ticket_open.substring(5, 7)) - 1, Number(festival.ticket_open.substring(8, 10)));
+	const reserveDate = new Date(
+		Number(festival.ticket_open.substring(0, 4)),
+		Number(festival.ticket_open.substring(5, 7)) - 1,
+		Number(festival.ticket_open.substring(8, 10))
+	);
 
 	const [isHovering, setIsHovering] = useState(0);
 
@@ -398,7 +152,8 @@ const Detail = () => {
 										<div dangerouslySetInnerHTML={{ __html: dateString }}></div>
 										<div>{festival.place}</div>
 										<div>
-											티켓오픈 : <span>{reserveDate.getFullYear()}</span>년 <span>{reserveDate.getMonth() + 1}</span>월 <span>{reserveDate.getDate()}</span>일({dayArr[reserveDate.getDay()]})
+											티켓오픈 : <span>{reserveDate.getFullYear()}</span>년 <span>{reserveDate.getMonth() + 1}</span>월 <span>{reserveDate.getDate()}</span>일(
+											{dayArr[reserveDate.getDay()]})
 										</div>
 									</Desc>
 									<Info>
@@ -628,3 +383,264 @@ const Detail = () => {
 };
 
 export default Detail;
+
+const Wrapper = styled.div`
+	display: flex;
+	overflow-y: scroll;
+	font-family: 'Noto Sans KR', sans-serif;
+	nav {
+		background-color: white;
+		color: #5d0ec0;
+
+		width: 15rem;
+		position: relative;
+		box-shadow: 0.1rem 0.1rem 0.7rem rgb(200, 200, 200);
+	}
+`;
+
+const Main = styled.div`
+	position: relative;
+	background-size: cover;
+	background-repeat: no-repeat;
+	margin: 0 auto;
+	text-align: center;
+	display: flex;
+	flex-direction: column;
+	gap: 1rem;
+	padding-left: 2%;
+	height: 200vh;
+`;
+
+const Back = styled.div`
+	background-color: #ffc600;
+	width: 65vw;
+	height: 190vh;
+	box-shadow: 0px 0.25rem 1.25rem rgba(0, 0, 0, 0.25);
+	border-radius: 1.25rem;
+	position: relative;
+	margin-top: 2rem;
+`;
+
+const Container = styled.div`
+	position: absolute;
+	top: 1.5rem;
+	right: 1.5rem;
+	height: 100%;
+	width: 100%;
+	box-shadow: 0px 0.25rem 1.25rem rgba(0, 0, 0, 0.25);
+	border-radius: 1.25rem;
+	background-color: white;
+	display: flex;
+	flex-direction: column;
+	gap: 5rem;
+`;
+
+const Board = styled.div`
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+	gap: 1rem;
+	box-sizing: border-box;
+	padding: 1rem;
+`;
+
+const Box = styled.div`
+	display: flex;
+	padding: 0.5rem;
+	padding-bottom: 0;
+	justify-content: center;
+	text-align: center;
+`;
+
+const Header = styled(Box)`
+	height: 2rem;
+	align-self: flex-end;
+	justify-content: center;
+	padding-top: 0;
+`;
+
+const ZzimBtn = styled.button`
+	display: flex;
+	font-size: 1rem;
+	gap: 0.5rem;
+	height: 2.5rem;
+	width: 6rem;
+	border: 0.1rem solid #5d0ec0;
+	box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+	color: #5d0ec0;
+	border-radius: 6.25rem;
+	font-weight: bold;
+	justify-content: center;
+	align-content: center;
+	background-color: #ffffff;
+	cursor: pointer;
+	text-align: center;
+	svg {
+		align-self: center;
+	}
+	p {
+		align-self: center;
+		margin: 0;
+		line-height: 100%;
+	}
+	&:hover {
+		background-color: #5d0ec0;
+		color: white;
+	}
+`;
+
+const Body = styled(Box)`
+	padding: 1rem;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	min-height: 30rem;
+	gap: 1rem;
+	img {
+		object-fit: contain;
+		max-width: 35%;
+		padding: 1rem;
+	}
+`;
+
+const Content = styled.div`
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+	a {
+		text-decoration: none;
+		color: black;
+		font-weight: bold;
+		font-size: 1.2rem;
+		&:visited {
+			text-decoration: none;
+			color: black;
+			font-weight: bold;
+			font-size: 1.2rem;
+		}
+		&:link {
+			text-decoration: none;
+			color: black;
+			font-weight: bold;
+			font-size: 1.2rem;
+		}
+	}
+`;
+
+const Desc = styled.div`
+	display: flex;
+	flex-direction: column;
+	gap: 1.5rem;
+	margin-bottom: 2rem;
+	font-size: 1.05rem;
+	span {
+		font-weight: bold;
+	}
+`;
+
+const Info = styled.div`
+	font-size: 0.9rem;
+	margin-bottom: 2rem;
+	p {
+		margin: 0;
+		margin-bottom: 1.3rem;
+	}
+`;
+
+const Tag = styled.div`
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	gap: 1rem;
+	align-content: center;
+	justify-content: center;
+	p {
+		background-color: #d9d9d9;
+		padding: 0.5rem 1rem;
+		margin: 0;
+		border-radius: 0.5rem;
+	}
+`;
+
+const Footer = styled(Box)`
+	button {
+		background-color: #5d0ec0;
+		width: 60%;
+		padding: 1rem;
+		text-decoration: none;
+		color: white;
+		border-radius: 0.5rem;
+		font-weight: bold;
+		box-shadow: 0 1rem 1rem -1rem #505050;
+		border: none;
+		font-size: 1rem;
+	}
+	a {
+		&p:first-child {
+			margin-bottom: 0.3rem;
+			font-size: 1rem;
+			line-height: 1.6rem;
+		}
+		&p:nth-child(2) {
+			margin-top: 0;
+			font-size: 0.8rem;
+		}
+	}
+`;
+
+const Check = styled.div`
+	display: flex;
+	flex-direction: column;
+	gap: 2rem;
+`;
+
+const PlaceQ = styled.div`
+	height: 5rem;
+`;
+
+const CheckBtn = styled.div`
+	padding-top: 5.5rem;
+	padding-left: 5rem;
+	padding-right: 3rem;
+	display: flex;
+	justify-content: flex-start;
+	align-items: center;
+	margin-left: 1rem;
+	button {
+		width: auto;
+		height: auto;
+		padding: 0.5rem 1rem;
+		border-radius: 5rem;
+		cursor: pointer;
+		background-color: white;
+		border-color: #5b5a5a;
+		color: #5b5a5a;
+		font-family: 'Noto Sans KR', sans-serif;
+		font-weight: medium;
+		font-size: 0.8rem;
+		border-width: 1px;
+		margin-right: 2rem;
+	}
+`;
+
+const RegisterBox = styled.div`
+	text-align: center;
+	button {
+		margin-top: 4rem;
+		width: 200px;
+		height: 2.5rem;
+		background-color: white;
+		border-radius: 10rem;
+		border-width: 2px;
+		border-color: #5d0ec0;
+		color: #5d0ec0;
+		font-family: 'Noto Sans KR', sans-serif;
+		font-weight: bold;
+		font-size: 15px;
+		cursor: pointer;
+		&:hover {
+			background-color: #5d0ec0;
+			color: white;
+		}
+	}
+`;

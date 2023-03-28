@@ -12,35 +12,35 @@ export const festivals = atom({
 });
 
 export const modalControl = atom({
-    key: 'modalControl',
-    default : false,
-})
+	key: 'modalControl',
+	default: false
+});
 
 export const postListAtom = atom({
-    key: "postList",
-    default: [],
+	key: 'postList',
+	default: []
 });
 
 export const setPagesAtom = atom({
-    key:"pages",
-    default:[],
+	key: 'pages',
+	default: []
 });
 
 export const setPageAtom = atom({
-    key:"page",
-    default:1,
+	key: 'page',
+	default: 1
 });
 
 export const isValidAtom = atom({
-    key:"isValid",
-    default:false,
+	key: 'isValid',
+	default: false
 });
 
 export const postSelector = selector({
-    key:"postSelector",
-    get:async({get})=>{
-        //여기 채워넣기
-    }
+	key: 'postSelector',
+	get: async ({ get }) => {
+		//여기 채워넣기
+	}
 });
 
 export const LoginState = atom({
@@ -57,13 +57,18 @@ export const accessToken = atom({
 
 
 export const replSelector = selector({
-    key:"replSelector",
-    get:async({get})=>{
-        //여기 채워넣기
-    }
+	key: 'replSelector',
+	get: async ({ get }) => {
+		//여기 채워넣기
+	}
 });
 
 export let finalValueAtom = atom({
-    key:"finalValue",
-    default:null,
+	key: 'finalValue',
+	default: null
+});
+
+export const tabAtom = atom({
+	key: 'tabAtom',
+	default: ''
 });

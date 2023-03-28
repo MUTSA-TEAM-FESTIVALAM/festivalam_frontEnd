@@ -68,14 +68,8 @@ export default FestList;
 const ListWrapper = styled.div`
 	display: flex;
 	justify-content: space-between;
-
-	nav {
-		background-color: white;
-		color: #5d0ec0;
-		width: 15rem;
-		position: relative;
-		box-shadow: 0.1rem 0.1rem 0.7rem rgb(200, 200, 200);
-	}
+	width: 100%;
+	height: 100%;
 `;
 
 const ListContainer = styled.div`
@@ -85,11 +79,17 @@ const ListContainer = styled.div`
 	margin: 0 auto;
 	margin-top: 1rem;
 	justify-content: center;
+	align-items: center;
 	padding-left: 2%;
+	margin-left: 18rem;
+	width: 100%;
+	margin-bottom: 5rem;
 `;
 
 const ListHeader = styled.div`
 	text-align: right;
+	align-self: flex-end;
+	margin-right: 8rem;
 	select {
 		border-radius: 0;
 		padding: 0.2rem;
@@ -98,8 +98,8 @@ const ListHeader = styled.div`
 
 const ListMain = styled.div`
 	display: flex;
-	gap: 3rem;
+	gap: 4rem;
 	flex-wrap: wrap;
-	width: 60rem;
+	width: 100%;
 	justify-content: center;
 `;

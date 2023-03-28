@@ -165,27 +165,21 @@ const Calendar = () => {
 
 const CalendarWrapper = styled.div`
 	display: flex;
-	justify-content: center;
-
-	nav {
-		background-color: white;
-		color: #5d0ec0;
-		height: 100vh;
-		width: 15rem;
-		box-shadow: 0.1rem 0.1rem 0.7rem rgb(200, 200, 200);
-	}
+	justify-content: flex-start;
+	width: 100%;
+	height: 100%;
 `;
 
 const CalendarContainer = styled.div`
-	background-size: cover;
-	background-repeat: no-repeat;
 	margin: 0 auto;
+	margin-top: 1.5rem;
+	margin-left: 18rem;
+	width: 100%;
 	text-align: center;
 	display: flex;
 	flex-direction: column;
-	align-items: end;
+	align-items: center;
 	gap: 1rem;
-	margin-top: 1rem;
 	padding-left: 2%;
 `;
 
@@ -193,6 +187,8 @@ const WeatherInfo = styled.div`
 	display: flex;
 	gap: 1rem;
 	border: 0.1rem solid black;
+	align-self: flex-end;
+	margin-right: 6.5rem;
 	justify-content: center;
 	align-items: center;
 	border-radius: 0.5rem;
